@@ -1,0 +1,20 @@
+<% include ./partials/header %>
+
+<h1>This is the show page</h1>
+<div class="show-content">
+    <% articles.forEach((article, index) => { %>
+        <div class="col">
+            <div class="article-title">
+                <p> <%=article.title%> </p>
+            </div>
+            <div class="article-image">
+                <img src =<%= article.urlToImage %>>
+            </div>
+            <div class="article-description">
+                <p><%= article.description %></p>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<% include ./partials/footer %>

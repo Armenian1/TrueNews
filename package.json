@@ -4,13 +4,18 @@
   "description": "This is going to be an express app that contains a RSS aggregator",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass app/sass/app.scss public/css/app.css && nodemon"
   },
   "author": "Armen Arsenian",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "newsapi": "^2.4.0",
     "sass": "^1.22.12"
   }
 }
