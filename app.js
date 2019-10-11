@@ -1,13 +1,20 @@
 require('dotenv').config();
 
-const express = require("express");
-const sass = require("sass");
-const NewsAPI = require("newsapi");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const   express         = require("express"),
+        app             = express();
+        sass            = require("sass"),
+        NewsAPI         = require("newsapi"),
+        mongoose        = require("mongoose"),
+        bodyParser      = require("body-parser"),
+        session         = require("express-session"),
+        passport        = require("passport"),
+        LocalStrategy   = require("passport-local");
 
-const Article = require("./models/article.js");
-const User = require("./models/user.js");
+const   Article         = require("./models/article.js");
+        User            = require("./models/user.js");
+
+const   serverRoutes    = require("./routes/server"),
+        newsRoutes      = require("./routes/news");
 
 var result = sass.renderSync({
     file: "app/sass/app.scss",   //Implement fiber for performance gain,
@@ -15,6 +22,26 @@ var result = sass.renderSync({
     outFile: "public/css/style.css"
 });
 
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
+
+//PASSPORT CONFIGURATION
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy({
+    usernameField: "user[username]",
+    passwordField: "user[password]"   
+}, User.authenticate()));
+passport.serializeUser(User.serializeUser( ));
+passport.deserializeUser(User.deserializeUser( ));
+
+//CONNECT TO MONGODB
 mongoose.connect(process.env.MONGOOSE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -27,15 +54,11 @@ mongoose.connect(process.env.MONGOOSE_URL, {
         console.log(err)
     })
 
-const app = express();
-const newsapi = new NewsAPI(process.env.API_KEY);
+// Router declarations
+app.use("/", serverRoutes);
+app.use("/news", newsRoutes);
 
-app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.set("view engine", "ejs");
-
-
+const newsapi = new NewsAPI(process.env.API_KEY);   // Should not use environment variable in future version.
 
 function getArticles() {
     newsapi.v2.everything({
@@ -64,62 +87,6 @@ function getArticles() {
             console.log(err);
         })
 }
-
-// LANDING PAGE
-app.get("/", (req, res) => {
-    res.render("landing");
-});
-
-// NEWS ARTICLES
-app.get("/news", (req, res) => {
-    Article.find({}, (err, allArticles) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("index", {articles: allArticles});     
-        }
-    });
-});
-
-// SOURCES - Choose your sources page
-app.get("/news/sources", (req, res) => {
-    res.render("sources");
-})
-
-// SOURCES - Post new sources
-app.post("/news/sources", (req, res) => {
-    console.log(req.body.sources[0]);
-    User.find({name: "armen"}, (err, foundUser) => {
-        if (err) {
-            console.log(err);
-        } else {
-            //foundUser.sources.push(req.body.sources[0]);
-            console.log(foundUser.sources);
-        }
-    })
-    res.redirect("/news/sources");
-})
-
-/*=================*/
-/*Login Routes */
-/*=================*/
-
-// REGISTER FORM
-app.get("/register", (req, res) => {
-    res.render("register");
-});
-
-// REGISTER POST
-app.post("/register", (req, res) => {
-    User.create(req.body.user, (err, newUser) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("New user added!")
-            res.redirect("/news")
-        }
-    });    
-});
 
 app.listen(process.env.PORT, () => {
     console.log("Running on port 3000...")
