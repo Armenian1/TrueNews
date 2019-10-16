@@ -58,36 +58,6 @@ mongoose.connect(process.env.MONGOOSE_URL, {
 app.use("/", serverRoutes);
 app.use("/news", newsRoutes);
 
-const newsapi = new NewsAPI(process.env.API_KEY);   // Should not use environment variable in future version.
-
-function getArticles() {
-    newsapi.v2.everything({
-            q: "Trump"
-        }).then(response => {
-            console.log(response);
-            let articles = response.articles;
-            for (let i=0; i<20; i++) {
-                Article.create({
-                    source: articles[i].source,
-                    author: articles[i].author,
-                    title: articles[i].title,
-                    description: articles[i].description,
-                    url: articles[i].url,
-                    urlToImage: articles[i].urlToImage,
-                    publishedAt: articles[i].publishedAt,
-                    content: articles[i].content
-                }, (err, article) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            }
-            console.log("Articles successfully saved to database");
-        }).catch(err => {
-            console.log(err);
-        })
-}
-
 app.listen(process.env.PORT, () => {
     console.log("Running on port 3000...")
 });
