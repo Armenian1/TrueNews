@@ -1,6 +1,7 @@
 const   express = require("express"),
         isLoggedIn = require("../middleware/index"),
-        getArticles = require("../utils/newsapi");
+        getArticles = require("../utils/newsapi"),
+        User = require("../models/user");
         
 router = express.Router();
 
