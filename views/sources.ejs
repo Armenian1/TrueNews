@@ -4,15 +4,15 @@
 
 <form action="/news/sources" method="POST">
     <div>
-        <input id="cnn" type="checkbox" name="sources" value="cnn">
+        <input id="cnn" type="checkbox" name="sources" value="cnn" <%= userSources.indexOf('cnn') !== -1 ? "checked" : ""  %> >
         <label for="cnn">CNN</label>
     </div>
     <div>
-        <input id="foxnews" type="checkbox" name="sources" value="fox-news">
+        <input id="foxnews" type="checkbox" name="sources" value="fox-news" <%= userSources.indexOf('fox-news') !== -1 ? "checked" : ""  %> >
         <label for="foxnews">Fox News</label>
     </div>
     <div>
-        <input id="nytimes" type="checkbox" name="sources" value="the-new-york-times">
+        <input id="nytimes" type="checkbox" name="sources" value="the-new-york-times" <%= userSources.indexOf('the-new-york-times') !== -1 ? "checked" : ""  %> >
         <label for="nytimes">New York Times</label>
     </div>
     <div>

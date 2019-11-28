@@ -10,8 +10,7 @@ const   express         = require("express"),
         passport        = require("passport"),
         LocalStrategy   = require("passport-local");
 
-const   Article         = require("./models/article.js");
-        User            = require("./models/user.js");
+const   User            = require("./models/user.js");
 
 const   serverRoutes    = require("./routes/server"),
         newsRoutes      = require("./routes/news");
@@ -45,14 +44,20 @@ passport.deserializeUser(User.deserializeUser( ));
 mongoose.connect(process.env.MONGOOSE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
 })  .then(() => {
         console.log("Database connected!");
-        //getArticles();
     })
     .catch(err => {
         console.log(err)
     })
+
+// Global variable definitions
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+})
 
 // Router declarations
 app.use("/", serverRoutes);

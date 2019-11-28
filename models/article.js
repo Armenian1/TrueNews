@@ -13,7 +13,11 @@ var articleSchema = new mongoose.Schema({
     url: String,
     urlToImage: String,
     publishedAt: String,
-    content: String
+    content: String,
+    dateCreated: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model("Article", articleSchema);

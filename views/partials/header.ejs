@@ -20,7 +20,11 @@
                     <p><a href="/news/sources">Sources</a></p>
                 </div>
                 <div class="nav-item">
-                    <p><a href="/login">Login</a></p>
+                    <% if (!currentUser) { %>
+                        <p><a href="/login">Login</a></p>
+                    <% } else { %>
+                        <p><a href="/logout">Logout</a></p>
+                    <% } %>
                 </div>
                 <div class="nav-item">
                     <p><a href="/register">Register</a></p>

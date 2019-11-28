@@ -1,11 +1,8 @@
 const   express     = require("express"),
         passport    = require("passport"),
         User        = require("../models/user.js");
-   //     bodyParser  = require("body-parser");
 
 const router = express.Router();
-
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 // LANDING PAGE
 router.get("/", (req, res) => {
@@ -13,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 /*=================*/
-/*Login Routes */
+/*Authentication Routes */
 /*=================*/
 
 // REGISTER FORM
@@ -43,13 +40,20 @@ router.post("/register", (req, res) => {
 // LOGIN FORM
 router.get("/login", (req, res) => {  
     res.render("login");
-})
+});
 
+// LOGIN POST
 router.post("/login", 
     passport.authenticate("local", { 
         failureRedirect: "/login",
         successRedirect: "/news"
     }),
 );
+
+//LOGOUT
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+});
 
 module.exports = router;
