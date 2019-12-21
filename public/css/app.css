@@ -1,9 +1,13 @@
+/***
+    Read this link to better structure project
+    https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4 
+***/
 .header {
   display: flex;
 }
 .header .logo {
   display: inline;
-  margin-right: 50px;
+  margin: 10px 25px 10px 25px;
 }
 .header .logo > a {
   color: black;
