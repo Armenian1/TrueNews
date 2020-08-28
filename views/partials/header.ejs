@@ -3,31 +3,37 @@
     <head>
         <title>True News</title>
         <link rel="stylesheet" href="/css/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap" rel="stylesheet">
     </head>
     <body>
         <nav class="header">  
             <div class="logo">
+                <img src="/images/logo.png" />
                 <a href="/">True News</a>
             </div>
             <div class="navbar">
-                <div class="nav-item">
-                    <p><a href="/news">News</a></p>
+                <div class="navbar-left-side">
+                    <div class="nav-item nav-item-left">
+                        <p><a href="/news">News</a></p>
+                    </div>
+                    <div class="nav-item nav-item-left">
+                        <p><a href="#">Favorites</a></p>
+                    </div>
+                    <div class="nav-item nav-item-left">
+                        <p><a href="/news/sources">Sources</a></p>
+                    </div>
                 </div>
-                <div class="nav-item">
-                    <p><a href="#">Favorites</a></p>
-                </div>
-                <div class="nav-item">
-                    <p><a href="/news/sources">Sources</a></p>
-                </div>
-                <div class="nav-item">
-                    <% if (!currentUser) { %>
-                        <p><a href="/login">Login</a></p>
-                    <% } else { %>
-                        <p><a href="/logout">Logout</a></p>
-                    <% } %>
-                </div>
-                <div class="nav-item">
-                    <p><a href="/register">Register</a></p>
+                <div class="navbar-right-side">
+                    <div class="nav-item nav-item-right">
+                        <% if (!currentUser) { %>
+                            <p><a href="/login">Login</a></p>
+                        <% } else { %>
+                            <p><a href="/logout">Logout</a></p>
+                        <% } %>
+                    </div>
+                    <div class="nav-item nav-item-right">
+                        <p><a href="/register">Register</a></p>
+                    </div>
                 </div>
             </div>
         </nav>

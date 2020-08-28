@@ -1,0 +1,20 @@
+body{
+    margin-top: 0;
+    .show-content {    
+        margin: 50px 100px;
+        display: flex;
+        flex-wrap: wrap;
+        > .col {
+            height: 400px;
+            width: 30%;
+            margin: 0 5% 80px 0;
+            padding: 0 40px;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-sizing: border-box;
+            &:nth-of-type(3n) {
+                margin-right: 0;
+            }
+        }
+    }
+}

@@ -9,6 +9,9 @@
   },
   "author": "Armen Arsenian",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "*"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",

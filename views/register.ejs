@@ -1,22 +1,23 @@
 <% include ./partials/header %>
 
-<h1>This is the Register Page</h1>
+<div class="content">
+    <h1>This is the Register Page</h1>
 
-<form class="register-form" action="/register" method="POST">
-    <label for="name">Name: </label>
-    <input id="name" type="text" placeholder="Name" name="user[name]">
-    
-    <label for="email">Email: </label>
-    <input id="email" type="email" placeholder="Email" name="user[email]">
+    <form class="register-form" action="/register" method="POST">
+        <label for="name">Name: </label>
+        <input id="name" type="text" placeholder="Name" name="user[name]">
+        
+        <label for="email">Email: </label>
+        <input id="email" type="email" placeholder="Email" name="user[email]">
 
-    <label for="username">Username: </label>
-    <input id="username" type="text" placeholder="Username" name="user[username]">  
+        <label for="username">Username: </label>
+        <input id="username" type="text" placeholder="Username" name="user[username]">  
 
-    <label for="password">Password: </label>
-    <input id="password" type="password" placeholder="Password" name="user[password]">
+        <label for="password">Password: </label>
+        <input id="password" type="password" placeholder="Password" name="user[password]">
 
-    <input type="submit" value="Submit">
-</form>
-
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 <% include ./partials/footer %>

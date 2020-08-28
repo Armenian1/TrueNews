@@ -3,6 +3,12 @@
     https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4 
 ***/
 
+
+
 @import "./views/header";
+@import "./views/footer";
 @import "./views/index";
+@import "./views/landing";
 @import "./views/register";
+@import "./components/newsArticle";
+@import "./components/categories";

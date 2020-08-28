@@ -4,35 +4,87 @@
 ***/
 .header {
   display: flex;
+  position: relative;
+  justify-content: center;
 }
-.header .logo {
-  display: inline;
-  margin: 10px 25px 10px 25px;
+.header > .logo {
+  position: absolute;
+  margin: 15px 25px 15px 25px;
+  left: 0px;
+  display: flex;
+  align-items: center;
 }
-.header .logo > a {
+.header > .logo > img {
+  width: 50px;
+}
+.header > .logo > a {
   color: black;
   text-decoration: none;
-  width: 10%;
   font-size: 25px;
+  margin-left: 15px;
 }
-.header .navbar {
-  width: 80%;
+.header > .navbar {
+  width: 60%;
   height: 50px;
+  background: #81E8E2;
   border: 2px solid black;
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  position: absolute;
+}
+.header > .navbar > .navbar-left-side {
+  float: left;
+  height: 100%;
+  width: 40%;
   display: flex;
   justify-content: space-around;
 }
-.header .navbar > .nav-item > p > a {
+.header > .navbar > .navbar-right-side {
+  float: right;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+.header > .navbar .nav-item {
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  height: 70%;
+  width: 95px;
+}
+.header > .navbar .nav-item > p {
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+}
+.header > .navbar .nav-item > p > a {
   color: black;
   text-decoration: none;
 }
+.header > .navbar .nav-item:hover {
+  background: #85C7E6;
+}
 
-.show-content {
+.content {
+  margin-top: 100px;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+}
+
+body {
+  margin-top: 0;
+}
+body .show-content {
   margin: 50px 100px;
   display: flex;
   flex-wrap: wrap;
 }
-.show-content > .col {
+body .show-content > .col {
   height: 400px;
   width: 30%;
   margin: 0 5% 80px 0;
@@ -41,9 +93,90 @@
   border-radius: 10px;
   box-sizing: border-box;
 }
-.show-content > .col:nth-of-type(3n) {
+body .show-content > .col:nth-of-type(3n) {
   margin-right: 0;
 }
+
+.header > .auth_buttons {
+  position: absolute;
+  width: 125px;
+  height: 50px;
+  margin-top: 15px;
+  text-align: center;
+  border-radius: 5px;
+}
+.header > .auth_buttons > p {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header > .auth_buttons > p > a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  font-family: "Oswald", sans-serif;
+}
+.header > .signup {
+  background: lightcoral;
+  right: 185px;
+}
+.header > .login {
+  background: lightcyan;
+  right: 30px;
+}
+
+.content > .landing_info {
+  width: 500px;
+  margin: 0 auto;
+}
+.content > .landing_info > p {
+  font-size: 30px;
+  margin: 0;
+  text-align: center;
+}
+.content > .landing_info > p:first-child {
+  font-size: 50px;
+  font-family: "Fjalla One", sans-serif;
+}
+.content > .signup_info {
+  width: 800px;
+  margin: 0 auto;
+}
+.content > .signup_info > p {
+  font-size: 24px;
+  font-family: "Asap", sans-serif;
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.category_content {
+  margin: 50px 220px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.category_content > .col {
+  height: 500px;
+  width: 22%;
+  margin: 0 4% 80px 0;
+  padding: 0 40px;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.category_content > .col:nth-of-type(4n) {
+  margin-right: 0;
+}
+
+.register-form {
+  margin-left: 20px;
+}
+.register-form > input {
+  display: block;
+  margin-bottom: 20px;
+}
+
 .show-content > .col > .article-title {
   width: 100%;
   height: 16%;
@@ -85,12 +218,32 @@
   line-height: 1;
 }
 
-.register-form {
-  margin-left: 20px;
+.category_content > .col > .category_title {
+  width: 100%;
+  height: 16%;
+  margin: 2% auto;
+  display: flex;
+  align-content: center;
 }
-.register-form > input {
-  display: block;
-  margin-bottom: 20px;
+.category_content > .col > .category_title > p {
+  width: 100%;
+  text-align: center;
+  margin: auto 0;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+.category_content > .col > .category_image {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+.category_content > .col > .category_image > img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=app.css.map */

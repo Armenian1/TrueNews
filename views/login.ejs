@@ -1,16 +1,17 @@
 <% include ./partials/header %>
 
-<h1>This is the Login Page</h1>
+<div class="content">
+    <h1>This is the Login Page</h1>
 
-<form class="register-form" action="/login" method="POST">
-    <label for="username">Username: </label>
-    <input id="username" type="text" placeholder="Username" name="user[username]"> 
+    <form class="register-form" action="/login" method="POST">
+        <label for="username">Username: </label>
+        <input id="username" type="text" placeholder="Username" name="user[username]"> 
 
-    <label for="password">Password: </label>
-    <input id="password" type="password" placeholder="Password" name="user[password]">
+        <label for="password">Password: </label>
+        <input id="password" type="password" placeholder="Password" name="user[password]">
 
-    <input type="submit" value="Submit">
-</form>
-
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 <% include ./partials/footer %>

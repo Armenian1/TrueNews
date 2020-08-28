@@ -1,6 +1,6 @@
 const   express = require("express"),
         isLoggedIn = require("../middleware/index"),
-        getArticles = require("../utils/newsapi"),
+        getArticles = require("../utils/indexUtility"),
         User = require("../models/user");
         
 router = express.Router();
@@ -31,10 +31,13 @@ router.post("/sources", isLoggedIn, (req, res) => {
                 console.log(`Set ${updatedUser.name}'s sources to ${updatedUser.sources}`)
             });
         }
-    } else {                                                                  
-        console.log("Removed all sources from " + req.user.name);  // Remove all sources
-        req.user.sources = [];
-        req.user.save();
+    } else {
+        alert("Please input a source.");
+        res.redirect("/news/sources"); 
+
+        // console.log("Removed all sources from " + req.user.name);  // Remove all sources
+        // req.user.sources = [];
+        // req.user.save();
     }
     res.redirect("/news/sources");
 });

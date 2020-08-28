@@ -1,5 +1,45 @@
-<% include ./partials/header %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>True News</title>
+        <link rel="stylesheet" href="/css/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Asap|Fjalla+One|Roboto+Mono|Oswald:wght@500&display=swap" rel="stylesheet">
+     
+    </head>
+    <body>
+        <nav class="header">  
+            <div class="logo">
+                <img src="/images/logo.png" />
+                <a href="/">True News</a>
+            </div>
+            <div class="auth_buttons signup">
+                <p><a href="/register">Sign Up</a></p>
+            </div>
+            <div class="auth_buttons login">
+                <p><a href="/login">Log in</a></p>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="landing_info">
+                <p>Keep Yourself Informed</p>
+                <p>Only On What You Want To Know</p>
+            </div>
+            <div class="signup_info">
+                <p>Sign up for a more personalized news experience</p>
+            </div>
+        </div>
 
-<h1>This is the landing page</h1>
-
-<% include ./partials/footer %>
+        <div class="category_content">
+            <% categoryMappings.forEach((categoryMapping) => { %>
+                <div class="col">
+                    <div class="category_title">
+                        <p><%= categoryMapping.categoryName %></p>
+                    </div>
+                    <div class="category_image">
+                        <img src =<%= categoryMapping.categoryArticle.urlToImage %>>
+                    </div>
+                </div>
+            <% }) %> 
+        </div>
+        
+        <% include ./partials/footer %>

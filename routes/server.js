@@ -1,12 +1,15 @@
-const   express     = require("express"),
-        passport    = require("passport"),
-        User        = require("../models/user.js");
+const   express         = require("express"),
+        passport        = require("passport"),
+        getCategories   = require("../utils/landingUtility"),
+        User            = require("../models/user.js");
 
 const router = express.Router();
 
 // LANDING PAGE
 router.get("/", (req, res) => {
-    res.render("landing");
+    getCategories().then((values) => {
+        res.render("landing", { categoryMappings: values });
+    });
 });
 
 /*=================*/
@@ -32,7 +35,7 @@ router.post("/register", (req, res) => {
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, () => {
-            res.redirect("/news");
+            res.redirect("/news/sources");
         });
     });
 });

@@ -1,6 +1,6 @@
-const newsapi = new NewsAPI(process.env.API_KEY);   // Should not use environment variable in future version.
-const Article = require("../models/article");
+const apiService = require("../helpers/apiService");
 const User = require("../models/user");
+const Article = require("../models/article");
 
 /***
  * Converts passed in hours to epoch time.
@@ -70,23 +70,6 @@ function removeUserArticles(user, expiredArticles) {
 }
 
 /***
- * Makes function call to NewsAPI for articles
- */
-function apiGetCall(user) {
-    return new Promise((resolve, reject) => {
-        newsapi.v2.topHeadlines({
-            sources: user.sources,
-            pageSize: 20
-        }).then(response => {
-            console.log("Found " + response.articles.length + " new articles");
-            resolve(response.articles);
-        }).catch(err => {
-            reject("Error in api call for articles");
-        });
-    });
-}
-
-/***
  * Creates Article documents from article array parameter.
  * Adds created article to specific user account.
  */
@@ -139,12 +122,12 @@ async function getArticles (user) {
         if (expiredArticles.length !== 0) {
             removeExpiredArticles(expiredArticles);
             removeUserArticles(user, expiredArticles);
-            let newArticles = await apiGetCall(user);
+            let newArticles = await apiService.getArticles(user);
             await createArticles(newArticles, user);
             console.log("Created " + newArticles.length + " new articles");
         }
     } else {
-        let newArticles = await apiGetCall(user);
+        let newArticles = await apiService.getArticles(user);
         await createArticles(newArticles, user);
         console.log("Created " + newArticles.length + " new articles");
     } 
