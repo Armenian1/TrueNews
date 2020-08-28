@@ -39,7 +39,7 @@ router.post("/sources", isLoggedIn, (req, res) => {
         // req.user.sources = [];
         // req.user.save();
     }
-    res.redirect("/news/sources");
+    res.redirect("/news");
 });
 
 module.exports = router;

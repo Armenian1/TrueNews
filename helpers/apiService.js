@@ -37,4 +37,3 @@ function getCategoryArticle(category) {
 }
 
 module.exports = {getArticles, getCategoryArticle};
-

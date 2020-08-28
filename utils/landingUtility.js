@@ -11,14 +11,13 @@ function createCategoryMapping(category, article) {
 
 function categoryApiCall(category) {
     return new Promise((resolve, reject) => {
-        //apiService.getCategoryArticle(category).then((article) => resolve(article[0]));
         apiService.getCategoryArticle(category).then((article) => {
             resolve(createCategoryMapping(category, article[0]));
         });
     });
 }
 
-function getCategories () {
+function getCategories() {
     return new Promise((resolve, reject) => {
         var categoryArticles = [];
         categories.map(category => {
@@ -31,6 +30,3 @@ function getCategories () {
 }
 
 module.exports = getCategories;
-
-
-
