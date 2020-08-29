@@ -4,11 +4,13 @@
 ***/
 
 
+@import "./layouts/header";
+@import "./layouts/footer";
+@import "./layouts/body";
 
-@import "./views/header";
-@import "./views/footer";
 @import "./views/index";
 @import "./views/landing";
 @import "./views/register";
+
 @import "./components/newsArticle";
 @import "./components/categories";

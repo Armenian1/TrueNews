@@ -30,17 +30,18 @@
         right: 30px;
     }
 }
-.content {
+.header_content {
     >.landing_info {
         width: 1000px;
         margin: 0 auto;
         >p {
             &:first-child {
+                margin-bottom: 0;
                 font-size: 50px;
                 font-family: 'Fjalla One', sans-serif;
             }
             font-size: 35px;
-            margin-top: 20px;
+            margin-top: 15px;
             text-align: center;
         }
     }
@@ -51,12 +52,11 @@
             font-size: 26px;
             font-family: 'Asap', sans-serif;
             text-align: center;
-            margin: 60px 0 0 0;
+            margin: 40px 0 0 0;
         }
     }
 }
 .category_content {
-    margin: 80px 460px;
     display: flex;
     flex-wrap: wrap;
     > .col {

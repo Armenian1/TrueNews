@@ -19,7 +19,7 @@
                 <p><a href="/login">Log in</a></p>
             </div>
         </nav>
-        <div class="content">
+        <div class="header_content">
             <div class="landing_info">
                 <p>Keep Yourself Informed</p>
                 <p>Only On What You Want To Know</p>
@@ -29,17 +29,20 @@
             </div>
         </div>
 
-        <div class="category_content">
-            <% categoryMappings.forEach((categoryMapping) => { %>
-                <div class="col">
-                    <div class="category_title">
-                        <p><%= categoryMapping.categoryName %></p>
+        <div class = "content">
+            <div class="category_content">
+                <% categoryMappings.forEach((categoryMapping) => { %>
+                    <div class="col">
+                        <div class="category_title">
+                            <p><%= categoryMapping.categoryName %></p>
+                        </div>
+                        <div class="category_image">
+                            <img src =<%= categoryMapping.categoryArticle.urlToImage %>>
+                        </div>
                     </div>
-                    <div class="category_image">
-                        <img src =<%= categoryMapping.categoryArticle.urlToImage %>>
-                    </div>
-                </div>
-            <% }) %> 
+                <% }) %> 
+            </div>
         </div>
+       
         
         <% include ./partials/footer %>
