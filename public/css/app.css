@@ -10,26 +10,28 @@
 .header > .logo {
   position: absolute;
   margin: 15px 25px 15px 25px;
-  left: 0px;
+  left: 30px;
   display: flex;
   align-items: center;
 }
 .header > .logo > img {
-  width: 50px;
+  width: 75px;
 }
 .header > .logo > a {
   color: black;
+  font-family: "Passion One", cursive;
+  font-weight: 700;
   text-decoration: none;
-  font-size: 25px;
-  margin-left: 15px;
+  font-size: 40px;
+  margin-left: 25px;
 }
 .header > .navbar {
-  width: 60%;
-  height: 50px;
-  background: #81E8E2;
+  width: 75%;
+  height: 60px;
+  background: lightcoral;
   border: 2px solid black;
   border-top: 0;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 10px 10px;
   position: absolute;
 }
 .header > .navbar > .navbar-left-side {
@@ -65,10 +67,6 @@
 }
 .header > .navbar .nav-item:hover {
   background: #85C7E6;
-}
-
-.content {
-  margin-top: 100px;
 }
 
 .footer {
@@ -129,12 +127,12 @@ body .show-content > .col:nth-of-type(3n) {
 }
 
 .content > .landing_info {
-  width: 500px;
+  width: 1000px;
   margin: 0 auto;
 }
 .content > .landing_info > p {
-  font-size: 30px;
-  margin: 0;
+  font-size: 35px;
+  margin-top: 5px;
   text-align: center;
 }
 .content > .landing_info > p:first-child {
@@ -146,14 +144,14 @@ body .show-content > .col:nth-of-type(3n) {
   margin: 0 auto;
 }
 .content > .signup_info > p {
-  font-size: 24px;
+  font-size: 26px;
   font-family: "Asap", sans-serif;
   text-align: center;
-  margin: 20px 0 0 0;
+  margin: 60px 0 0 0;
 }
 
 .category_content {
-  margin: 50px 220px;
+  margin: 80px 460px;
   display: flex;
   flex-wrap: wrap;
 }

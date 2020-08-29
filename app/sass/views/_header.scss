@@ -5,26 +5,28 @@
     >.logo {
         position: absolute;
         margin: 15px 25px 15px 25px;
-        left: 0px;
+        left: 30px;
         display: flex;
         align-items: center;
         > img {
-            width: 50px;
+            width: 75px;
         }
         > a {
             color: black;
+            font-family: 'Passion One', cursive;
+            font-weight: 700;
             text-decoration: none;
-            font-size: 25px;
-            margin-left: 15px;
+            font-size: 40px;
+            margin-left: 25px;
         }
     }
     >.navbar {
-        width: 60%;
-        height: 50px;
-        background: #81E8E2;
+        width: 75%;
+        height: 60px;
+        background: lightcoral;
         border: 2px solid black;
         border-top: 0;
-        border-radius: 0 0 20px 20px;
+        border-radius: 0 0 10px 10px;
         position: absolute;
         >.navbar-left-side {
             float:left;
@@ -63,7 +65,4 @@
             
         }
     }
-}
-.content {
-    margin-top: 100px;
 }
