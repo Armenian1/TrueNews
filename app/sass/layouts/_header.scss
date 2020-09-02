@@ -23,45 +23,46 @@
     >.navbar {
         width: 75%;
         height: 60px;
-   
-    
-   
-     
+        margin-top: 18px;    
         >.navbar-left-side {
             float:left;
             height: 100%; 
             width: 40%;
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-start;
+            >.nav-item-left {
+                margin: auto 0 auto 100px;
+            }
         }
         >.navbar-right-side {
             float:right;
             height: 100%;
             width:30%;
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-end;
+            >.nav-item-right {
+                margin: auto 100px auto 0;
+            }
         }     
-        .nav-item {
-            margin: auto 0;
+        .nav-item {           
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 14px;
             height: 70%;
-            width: 95px;
+            width: auto;
             >p {
-                margin: 0;
-                font-family: 'Roboto Mono', monospace;
+                margin: 0;         
                 >a {
                     color: black;
-                    font-family: 'Bungee Inline', cursive;
+                    font-family: 'Fredoka One', cursive;
                     text-decoration: none;
+                    font-size: 26px;
                 }
             }
             &:hover {
                 background: #85C7E6;
-            } 
-            
+            }           
         }
     }
 }

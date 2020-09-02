@@ -28,38 +28,44 @@
 .header > .navbar {
   width: 75%;
   height: 60px;
+  margin-top: 18px;
 }
 .header > .navbar > .navbar-left-side {
   float: left;
   height: 100%;
   width: 40%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+}
+.header > .navbar > .navbar-left-side > .nav-item-left {
+  margin: auto 0 auto 100px;
 }
 .header > .navbar > .navbar-right-side {
   float: right;
   height: 100%;
   width: 30%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+}
+.header > .navbar > .navbar-right-side > .nav-item-right {
+  margin: auto 100px auto 0;
 }
 .header > .navbar .nav-item {
-  margin: auto 0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
   height: 70%;
-  width: 95px;
+  width: auto;
 }
 .header > .navbar .nav-item > p {
   margin: 0;
-  font-family: "Roboto Mono", monospace;
 }
 .header > .navbar .nav-item > p > a {
   color: black;
-  font-family: "Bungee Inline", cursive;
+  font-family: "Fredoka One", cursive;
   text-decoration: none;
+  font-size: 26px;
 }
 .header > .navbar .nav-item:hover {
   background: #85C7E6;
