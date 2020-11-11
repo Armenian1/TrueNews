@@ -1,7 +1,5 @@
 var mongoose = require("mongoose");
 
-/*NEED TO MAKE IT SO THAT EACH USER HAS ITS OWN ARTICLES */
-
 var articleSchema = new mongoose.Schema({
     source: {
         id: String,

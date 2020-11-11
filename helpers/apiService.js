@@ -1,5 +1,4 @@
-const newsapi = new NewsAPI(process.env.API_KEY);   // Should not use environment variable in future version
-
+const newsapi = new NewsAPI(process.env.API_KEY);
 function getSources(user) {
     return new Promise((reject, resolve) => {
         newsapi.v2.sources({
@@ -19,7 +18,6 @@ function getSources(user) {
 function getArticles(user) {
     return new Promise((resolve, reject) => {
         newsapi.v2.topHeadlines({
-            // sources: user.sources, mtv-news, recode
             sources: user.sources
         }).then(response => {
              console.log("Found " + response.totalResults + " new articles");

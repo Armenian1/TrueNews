@@ -15,7 +15,7 @@ function hoursToEpoch(numHours) {
  */
 function findExpiredArticles(user) {
     return new Promise((resolve, reject) => {
-        User.findById(user._id).populate("articles").exec((err, populatedUser) => {         /* IS THERE A QUICKER WAY TO POPULATE ARTICLES WITHOUT FINDBYID()? */
+        User.findById(user._id).populate("articles").exec((err, populatedUser) => { 
             if (err) {
                 console.log(err);   
                 reject("Error in populating user articles");
@@ -132,21 +132,6 @@ async function getArticles (user) {
         await createArticles(newArticles, user);
         console.log("Created " + newArticles.length + " new articles");
     } 
-
-    // var articleTitles = [];
-    // for (let i=0; i<1; i++)
-    // {
-    //     let newsArticles = await apiService.getArticles(user);
-    //     console.log(`There are ${newsArticles.length} articles`)
-    //     newsArticles.forEach((article) => {
-    //         articleTitles.push(article.title);
-    //     })
-    // }
-
-    // console.log("Have " + articleTitles.length + " titles");
-    // var uniqueTitles = [... new Set(articleTitles)];
-
-    // console.log(`We have ${uniqueTitles.length} unique titles.`)
 }
 
 

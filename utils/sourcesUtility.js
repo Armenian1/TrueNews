@@ -7,7 +7,6 @@ async function findSources() {
         }).catch(err => {
             reject(err);
         });
-
     });  
 }
 
