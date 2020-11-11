@@ -1,4 +1,4 @@
-const newsapi = new NewsAPI(process.env.API_KEY);   // Should not use environment variable in future version.
+const newsapi = new NewsAPI(process.env.API_KEY);   // Should not use environment variable in future version
 
 function getSources(user) {
     return new Promise((reject, resolve) => {
