@@ -22,7 +22,7 @@ function findExpiredArticles(user) {
             }
             let articles = populatedUser.articles;
             let expiredArticles = articles.filter((article) => {
-                return (Date.now() - article.dateCreated > hoursToEpoch(1));        // Determine if article expired based on article age.
+                return (Date.now() - article.dateCreated > hoursToEpoch(0));        // Determine if article expired based on article age.
             }).map((article) => {
                 return article._id;
             });
@@ -116,7 +116,8 @@ function removeAllUserArticles(user) {
 /***
  * Executes all functions to update Article list to be shown.
  */
-async function getArticles (user) {   
+async function getArticles (user) {
+
     if (user.articles.length !== 0) {                                           // If user has saved articles
         let expiredArticles = await findExpiredArticles(user);                  // Find articles that have been stored too long.
         if (expiredArticles.length !== 0) {
@@ -131,6 +132,23 @@ async function getArticles (user) {
         await createArticles(newArticles, user);
         console.log("Created " + newArticles.length + " new articles");
     } 
+
+    // var articleTitles = [];
+    // for (let i=0; i<1; i++)
+    // {
+    //     let newsArticles = await apiService.getArticles(user);
+    //     console.log(`There are ${newsArticles.length} articles`)
+    //     newsArticles.forEach((article) => {
+    //         articleTitles.push(article.title);
+    //     })
+    // }
+
+    // console.log("Have " + articleTitles.length + " titles");
+    // var uniqueTitles = [... new Set(articleTitles)];
+
+    // console.log(`We have ${uniqueTitles.length} unique titles.`)
 }
+
+
 
 module.exports = getArticles;

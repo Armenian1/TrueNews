@@ -1,25 +1,21 @@
 <% include ./partials/header %>
 
 <div class="content">
-    <h1>This is the sources page!</h1>
-
     <form action="/news/sources" method="POST">
-        <div>
-            <input id="cnn" type="checkbox" name="sources" value="cnn" <%= userSources.indexOf('cnn') !== -1 ? "checked" : ""  %> >
-            <label for="cnn">CNN</label>
-        </div>
-        <div>
-            <input id="foxnews" type="checkbox" name="sources" value="fox-news" <%= userSources.indexOf('fox-news') !== -1 ? "checked" : ""  %> >
-            <label for="foxnews">Fox News</label>
-        </div>
-        <div>
-            <input id="nytimes" type="checkbox" name="sources" value="the-new-york-times" <%= userSources.indexOf('the-new-york-times') !== -1 ? "checked" : ""  %> >
-            <label for="nytimes">New York Times</label>
-        </div>
-        <div>
-            <button type="submit">Submit</button>
+        <div class="show-content">
+            <% allSources.forEach(source => { %>
+                <div class = "list-item">
+                    <label class="source-label" for= <%= source.id %> > <%= source.name %> </label>
+                    <input class="source-checkbox" id= <%= source.id %> type="checkbox" name="sources" value=<%= source.id %> <%= userSources.indexOf(source.id) !== -1 ? "checked" : ""  %> >
+                </div>
+            <% }) %>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
         </div>
     </form>
 </div>
 
 <% include ./partials/footer %>
+
+

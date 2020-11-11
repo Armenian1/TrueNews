@@ -182,6 +182,13 @@ body .show-content > .col:nth-of-type(3n) {
   margin-bottom: 20px;
 }
 
+.show-content > .list-item > .source-label {
+  width: 100%;
+}
+.show-content > .list-item > .source-checkbox {
+  width: 100%;
+}
+
 .show-content > .col > .article-title {
   width: 100%;
   height: 16%;
