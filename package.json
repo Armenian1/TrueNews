@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "sass app/sass/app.scss public/css/app.css && nodemon"
+    "build": "sass app/sass/app.scss public/css/app.css && nodemon",
+    "debug": "sass app/sass/app.scss public/css/app.css && nodemon --inspect app.js"
   },
   "author": "Armen Arsenian",
   "license": "ISC",
