@@ -7,12 +7,20 @@ const   express = require("express"),
 router = express.Router();
 
 // NEWS ARTICLES
-router.get("/", isLoggedIn, (req, res) => {    
-    getArticles(req.user).then(() => {
-        User.findOne({_id: req.user._id}).populate("articles").exec((err, user) => {
+router.get("/", (req, res) => {    
+    User.findOne({username: "armen"}).then(user => {
+        User.findOne({_id: user._id}).populate("articles").exec((err, user) => {
             res.render("index", {articles: user.articles});
         }); 
     });
+    
+    
+    /* Correct way */
+    // getArticles(req.user).then(() => {
+    //     User.findOne({_id: req.user._id}).populate("articles").exec((err, user) => {
+    //         res.render("index", {articles: user.articles});
+    //     }); 
+    // });
 });
 
 // SOURCES - Choose your sources page
@@ -42,5 +50,17 @@ router.post("/sources", isLoggedIn, (req, res) => {
     }
     res.redirect("/news");
 });
+
+// FAVORITES - Display user favorites
+router.get("/favorites", (req, res) => {
+    /* hardcoding user */
+    User.findOne({username: "armen"}).then(foundUser => {
+        res.render("favorites", {userFavorites: foundUser.favorites});
+
+    })
+
+    /* actual code */
+    res.render("favorites");
+})
 
 module.exports = router;

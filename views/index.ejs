@@ -5,7 +5,10 @@
         <% articles.forEach((article) => { %>
             <div class="col">
                 <div class="article-title">
-                    <p> <%=article.title%> </p>
+                    <p> <%=article.title%> </p>                    
+                </div>
+                <div class="favorites-icon">
+                    <i class="fas fa-heart"></i>          
                 </div>
                 <div class="article-image">
                     <img src =<%= article.urlToImage %>>

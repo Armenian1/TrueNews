@@ -7,6 +7,12 @@ var userSchema = new mongoose.Schema({
     username: String,
     password: String,
     sources:[String],
+    favorites: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Article"
+        }
+    ],
     articles: [
         {
             type: mongoose.Schema.Types.ObjectId,
