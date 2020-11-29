@@ -1,5 +1,22 @@
 <% include ./partials/header %>
 
-<h1> Welcome to favorites page!</h1>
+<div class="content">
+    <div class="show-content">
+        <% articles.forEach((article) => { %>
+            <div class="col">
+                <div class="article-title">
+                    <p> <%=article.title%> </p>                    
+                </div>
+                <div class="article-image">
+                    <img src =<%= article.urlToImage %>>
+                </div>
+                <div class="article-description">
+                    <p><%= article.description %></p>
+                    <p><a href= <%= article.url %> target="_blank">See more</a></p>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
 
 <% include ./partials/footer %>

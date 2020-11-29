@@ -9,13 +9,13 @@ var userSchema = new mongoose.Schema({
     sources:[String],
     favorites: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             ref: "Article"
         }
     ],
     articles: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             ref: "Article"
         }
     ]

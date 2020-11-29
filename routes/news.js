@@ -3,16 +3,65 @@ const   express = require("express"),
         getArticles = require("../utils/indexUtility"),
         findSources = require("../utils/sourcesUtility"),
         User = require("../models/user");
+
         
 router = express.Router();
 
 // NEWS ARTICLES
 router.get("/", (req, res) => {    
+
+
+    /* HERE YOU SHOULD RESEARCH HOW TO ADD AN EVENT HANDLER FOR THE ICON */
+    // WHY CANT I PASS ARTICLE INTO THE SCRIPT FILE
     User.findOne({username: "armen"}).then(user => {
         User.findOne({_id: user._id}).populate("articles").exec((err, user) => {
-            res.render("index", {articles: user.articles});
-        }); 
-    });
+            // res.render("index", { articles: user.articles, saveFavorite: (article) => { console.log("hope") }});
+            // res.render("index", { articles: user.articles, saveFavorite: () => { console.log("hope") }});
+             res.render("index", { articles: user.articles});
+
+                // User.findOneAndUpdate({_id: user.id}, {"favorites": [...user.favorites, article]}, (err, updatedUser) => {
+                //     if (err) {
+                //         console.log(err);
+                //     }
+                //     console.log(`Added ${article.title} to ${updatedUser.name}'s favorties`);
+                // });
+            });
+        });
+    // });
+
+    // User.findOne({username: "armen"}).then(user => {
+    //     User.findOneAndUpdate({_id: user._id}, {name: "armen"}, (err, foundUser) => {
+    //         if (err) {
+    //             console.log(err);
+    //         }
+    //         console.log("Update works! for" + foundUser.name)
+    //     });
+    // })
+
+    // User.findOne({username: "armen"}).then(user => {
+    //     User.findOne({_id: user._id}).populate("articles").exec((err, user) => {
+    //         res.render("index", { articles: user.articles, saveFavorite: (article) => {
+               
+    //             req.user.updateOne({"favorites": [...req.user.favorites, article]}, (err, updatedUser) => {
+    //                 if (err) {
+    //                     console.log(err);
+    //                 }
+    //                 console.log(`Added ${article.title} to ${updatedUser.name}'s favorties`);
+    //             })
+    //         }});         
+    //     });
+    // });
+        
+
+
+
+    // User.findOne({username: "armen"}).then(user => {
+    //     getArticles(user).then(() => {
+    //         User.findOne({_id: user._id}).populate("articles").exec((err, user) => {
+    //             res.render("index", {articles: user.articles});
+    //         }); 
+    //     });
+    // })
     
     
     /* Correct way */
@@ -52,15 +101,28 @@ router.post("/sources", isLoggedIn, (req, res) => {
 });
 
 // FAVORITES - Display user favorites
-router.get("/favorites", (req, res) => {
+router.get("/favorites", isLoggedIn, (req, res) => {
     /* hardcoding user */
-    User.findOne({username: "armen"}).then(foundUser => {
-        res.render("favorites", {userFavorites: foundUser.favorites});
+    // User.findOne({username: "armen"}).then(foundUser => {
+    //     res.render("favorites", {userFavorites: foundUser.favorites});
 
-    })
+    // })
 
     /* actual code */
-    res.render("favorites");
+    User.findOne({_id: req.user._id}).populate("favorites").exec((err, user) => {
+        res.render("favorites", {articles: user.favorites});
+    });
+})
+
+router.post("/favorites", isLoggedIn, (req, res) => {
+    req.user.favorites.push(req.body.favorite);
+    req.user.save((err, updatedUser) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log(`Added ${req.body.favorite.title} to ${updatedUser.name}'s favorties`);
+    });
+    res.redirect("/news");
 })
 
 module.exports = router;

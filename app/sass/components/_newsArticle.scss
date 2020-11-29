@@ -1,6 +1,6 @@
 .show-content >.col {
     >.article-title {
-        width: 95%;
+        width: 94%;
         height: 16%;
         margin: 2% auto;
         display: inline-block;
@@ -19,6 +19,9 @@
         width: 5%;
         display: inline;
         vertical-align: top;
+        > i {
+            margin-top: 10px;
+        }
     }
     > .article-image {
         width: 100%;

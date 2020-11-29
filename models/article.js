@@ -1,6 +1,11 @@
 var mongoose = require("mongoose");
+const { v4: uuidv4 } = require("uuid");
 
 var articleSchema = new mongoose.Schema({
+    _id: {
+        type: String,
+        default: function() { return uuidv4() },
+    },
     source: {
         id: String,
         name: String

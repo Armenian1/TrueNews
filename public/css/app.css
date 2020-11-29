@@ -190,7 +190,7 @@ body .show-content > .col:nth-of-type(3n) {
 }
 
 .show-content > .col > .article-title {
-  width: 95%;
+  width: 94%;
   height: 16%;
   margin: 2% auto;
   display: inline-block;
@@ -209,6 +209,9 @@ body .show-content > .col:nth-of-type(3n) {
   width: 5%;
   display: inline;
   vertical-align: top;
+}
+.show-content > .col > .favorites-icon > i {
+  margin-top: 10px;
 }
 .show-content > .col > .article-image {
   width: 100%;

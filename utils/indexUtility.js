@@ -22,7 +22,7 @@ function findExpiredArticles(user) {
             }
             let articles = populatedUser.articles;
             let expiredArticles = articles.filter((article) => {
-                return (Date.now() - article.dateCreated > hoursToEpoch(1));        // Determine if article expired based on article age.
+                return (Date.now() - article.dateCreated > hoursToEpoch(0));        // Determine if article expired based on article age.
             }).map((article) => {
                 return article._id;
             });
@@ -78,7 +78,7 @@ function createArticles(articles, user) {
         Article.create(articles, (err, newArticles) => {
             if (err) {
                 console.log("Error in creating new articles");
-                console.log(err);
+                reject(err);
             }
             newArticles.forEach((article) => {
                 user.articles.push(article);
